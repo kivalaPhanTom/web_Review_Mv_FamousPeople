@@ -2,6 +2,10 @@
 {% block detail %}
 {% load static %}
  <!--Main Content-->
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=278584073151612&autoLogAppEvents=1" nonce="X5n6Utq0">
+</script>
     <div class="container detail_content mt-3 mb-3">
 
 
@@ -11,7 +15,7 @@
                       <ul>
                         {% for item in list_detail_product.propertyimage_set.all %}
                              {% if forloop.counter == 1 %}
-                                 <img class="first_img_intro  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="first_img_intro img-fluid rounded" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
                       </ul>
@@ -58,7 +62,7 @@
                       <ul>
                         {% for item in list_detail_product.propertyimage_set.all %}
                              {% if forloop.counter == 2 %}
-                                 <img class="img_part2  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="img_part2 img-fluid rounded" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
                       </ul>
@@ -71,7 +75,7 @@
                       <ul>
                         {% for item in list_detail_product.propertyimage_set.all %}
                              {% if forloop.counter == 3%}
-                                 <img class="img_part2  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="img_part2 img-fluid rounded" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
                       </ul>
@@ -94,7 +98,7 @@
                       <ul>
                         {% for item in list_detail_product.propertyimage_set.all %}
                              {% if forloop.counter == 4%}
-                                 <img class="img_trangchu img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="img_trangchu img-fluid rounded" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
                       </ul>
@@ -116,7 +120,7 @@
                       <ul>
                         {% for item in list_detail_product.propertyimage_set.all %}
                              {% if forloop.counter == 5%}
-                                 <img class="img_trangchu img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded img_trangchu img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
                       </ul>
@@ -135,7 +139,7 @@
                {% if list_detail_product %}
                   {% csrf_token %}
                      {% for item in list_detail_product.propertylinkyoutobe_set.all %}
-                         <iframe width="560" height="315" src="{{item.linkSource}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                         <iframe class="rounded" width="560" height="315" src="{{item.linkSource}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                       {% endfor %}
               {% endif %}
            </div>
@@ -147,22 +151,24 @@
 
                            <p style="float:right; margin-right:20px;">Được upload vào ngày:<span>{{ item.timeDetail }}</span></p>
                         <!-- Phần share facebook -->
-                   <div id="fb-root"></div>
-                          <script>(function(d, s, id) {
-                            var js, fjs = d.getElementsByTagName(s)[0];
-                            if (d.getElementById(id)) return;
-                            js = d.createElement(s); js.id = id;
-                            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-                            fjs.parentNode.insertBefore(js, fjs);
-                          }(document, 'script', 'facebook-jssdk'));</script>
+<!--                   <div id="fb-root"></div>-->
+<!--                          <script>(function(d, s, id) {-->
+<!--                            var js, fjs = d.getElementsByTagName(s)[0];-->
+<!--                            if (d.getElementById(id)) return;-->
+<!--                            js = d.createElement(s); js.id = id;-->
+<!--                            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";-->
+<!--                            fjs.parentNode.insertBefore(js, fjs);-->
+<!--                          }(document, 'script', 'facebook-jssdk'));</script>-->
 
-                 <div class="btn_share_fb_twiter">
+                <div class="fb-share-button " data-href="https://m-view.herokuapp.com/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fm-view.herokuapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a>
+                </div>
+                 <div class="btn_share_fb_twiter ">
                         <!-- Your share button code -->
-                          <div class="fb-share-button"
-                                data-size="large"
-                                data-href="{{ request.build_absolute_uri }} "
-                                data-layout="button_count">
-                          </div>
+<!--                          <div class="fb-share-button"-->
+<!--                                data-size="large"-->
+<!--                                data-href="{{ request.build_absolute_uri }} "-->
+<!--                                data-layout="button_count">-->
+<!--                          </div>-->
                         <!-- Hết phần share facebook -->
 
                         <!-- Phần share twitter -->

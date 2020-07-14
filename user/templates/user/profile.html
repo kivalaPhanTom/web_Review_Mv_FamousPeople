@@ -14,8 +14,15 @@
                 {% if user.profile.img %}
                 <img class="img d-inline-block" src="{{ user.profile.img.url }}" alt="">
                 {% endif %}
+                {% if user.last_name %}
+                <h4>{{ user.last_name }} {{user.first_name}}</h4>
+                {% endif %}
                 <div class="body d-block">
+                    {% if user.last_name %}
+                    <h5>{{ user.last_name }} {{ user.first_name }}</h5>
+                    {% else %}
                     <h5>{{ user.username }}</h5>
+                    {% endif %}
                     <p class="email">{{ user.email }}</p>
                 </div>
             </div>
@@ -64,8 +71,16 @@
             $('.profile').addClass('p-0');
         }
     });
-
-
-
 </script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Levrq0ZAAAAAD4pjgERdetdqcKzluHHtu-14nxD"></script>
+<script>
+      function onClick(e) {
+        e.preventDefault();
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6Levrq0ZAAAAAD4pjgERdetdqcKzluHHtu-14nxD', {action: 'submit'}).then(function(token) {
+              // Add your logic to submit to your backend server here.
+          });
+        });
+      }
+  </script>
 {% endblock %}

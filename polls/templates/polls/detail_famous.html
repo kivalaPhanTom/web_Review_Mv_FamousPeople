@@ -2,6 +2,10 @@
 {% block detail_famous %}
 {% load static%}
 <!--Main Content-->
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v7.0&appId=278584073151612&autoLogAppEvents=1" nonce="X5n6Utq0">
+</script>
+
     <div class="famous_content">
         <div class="container  detail_famous_content mt-3 mb-3">
             {% if List_Detail_Famous %}
@@ -18,7 +22,7 @@
 
                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 1-->
                              {% if forloop.counter == 1 %}
-                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -29,7 +33,7 @@
                         {% endfor %}
                          {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 2-->
                              {% if forloop.counter == 2 %}
-                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -40,7 +44,7 @@
                         {% endfor %}
                          {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 3-->
                              {% if forloop.counter == 3 %}
-                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -51,7 +55,7 @@
                         {% endfor %}
                          {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 4-->
                              {% if forloop.counter == 4%}
-                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -62,7 +66,7 @@
                         {% endfor %}
                          {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 5-->
                              {% if forloop.counter == 5%}
-                                 <img class="famous_im img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -73,7 +77,7 @@
                         {% endfor %}
                          {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 6-->
                              {% if forloop.counter == 6%}
-                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -84,7 +88,7 @@
                         {% endfor %}
                          {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 7-->
                              {% if forloop.counter == 7%}
-                                 <img class="famous_im img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -95,7 +99,7 @@
                         {% endfor %}
                          {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 8-->
                              {% if forloop.counter == 8%}
-                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                                 <img class="rounded famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
                              {% endif %}
                         {% endfor %}
 
@@ -105,22 +109,24 @@
                     <p style="float:right;"class="time_famous">ĐƯợc upload vào ngày:<span>{{ item.timeDetail }}</span></p>
                 </div>
             <!-- Phần share facebook -->
-                <div id="fb-root"></div>
-                  <script>(function(d, s, id) {
-                    var js, fjs = d.getElementsByTagName(s)[0];
-                    if (d.getElementById(id)) return;
-                    js = d.createElement(s); js.id = id;
-                    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-                    fjs.parentNode.insertBefore(js, fjs);
-                  }(document, 'script', 'facebook-jssdk'));</script>
+<!--                <div id="fb-root"></div>-->
+<!--                  <script>(function(d, s, id) {-->
+<!--                    var js, fjs = d.getElementsByTagName(s)[0];-->
+<!--                    if (d.getElementById(id)) return;-->
+<!--                    js = d.createElement(s); js.id = id;-->
+<!--                    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";-->
+<!--                    fjs.parentNode.insertBefore(js, fjs);-->
+<!--                  }(document, 'script', 'facebook-jssdk'));</script>-->
 
              <div class="btn_share_fb_twiter">
                    <!-- Your share button code -->
-                      <div class="fb-share-button"
-                        data-size="large"
-                        data-href="{{ request.build_absolute_uri }}"
-                        data-layout="button_count">
-                      </div>
+<!--                      <div class="fb-share-button"-->
+<!--                        data-size="large"-->
+<!--                        data-href="{{ request.build_absolute_uri }}"-->
+<!--                        data-layout="button_count">-->
+<!--                      </div>-->
+                 <div class="fb-share-button " data-href="https://m-view.herokuapp.com/" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fm-view.herokuapp.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Chia sẻ</a>
+                </div>
                    <!-- Hết phần share facebook -->
                   <!-- Phần share twitter -->
                      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

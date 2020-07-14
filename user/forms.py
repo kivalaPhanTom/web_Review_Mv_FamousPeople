@@ -109,6 +109,7 @@ class RegisterForm(forms.Form):
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField(label='Email', required=False)
+
     # username = UsernameField(label='Tên đăng nhập', required=False)
 
     class Meta:
@@ -119,6 +120,16 @@ class UserUpdateForm(forms.ModelForm):
         }
 
 
+class UserUpdateForm1(forms.ModelForm):
+    email = forms.EmailField(label='Email', required=False)
+
+    # username = UsernameField(label='Tên đăng nhập', required=False)
+
+    class Meta:
+        model = User
+        fields = ['email']
+
+
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
@@ -127,5 +138,3 @@ class ProfileUpdateForm(forms.ModelForm):
             'gender': _('Giới tính'),
             'img': _('Ảnh đại diện'),
         }
-
-

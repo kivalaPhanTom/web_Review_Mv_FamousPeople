@@ -78,10 +78,15 @@
             <div class="profile-logout text-center">
                 {% if user.is_authenticated %}
                 <div class="user-name text-light">
-                    {% if user.username %}
-                    <p class="nav-item user m-0 text-light">{{ user.username }}</p>
+                    {% if user.profile.img.url %}
+				    <img class="d-inline" src="{{ user.profile.img.url }}" alt="">
                     {% else %}
-                    <p class="nav-item user m-0 text-light">{{ user.last_name }} {{ user.first_name }}</p>
+                    <img src="{% static 'polls/img/avatar.png' %}" alt="">
+				    {% endif %}
+                    {% if user.last_name %}
+                    <p class="nav-item user m-0 text-light d-inline">{{ user.last_name }} {{ user.first_name }}</p>
+                    {% else %}
+                    <p class="nav-item user m-0 text-light d-inline">{{ user.username }}</p>
                     {% endif %}
                 </div>
                 <div class="up">
@@ -89,7 +94,11 @@
                 </div>
                 <div class="div-profile">
                     <ul class="m-0">
+                        {% if user.last_name %}
+                        <li class="li-profile"><a href="{% url 'user:profile_social' %}">Hồ sơ</a></li>
+                        {% else %}
                         <li class="li-profile"><a href="{% url 'user:profile' %}">Hồ sơ</a></li>
+                        {% endif %}
                         <li class="li-logout"><a href="{% url 'user:logout' %}?next={{ request.path }}">Đăng xuất</a>
                         </li>
                     </ul>

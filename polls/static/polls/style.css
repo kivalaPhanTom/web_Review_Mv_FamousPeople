@@ -1,9 +1,15 @@
 
 *{margin: 0;padding: 0;}
-body{
-
+body a{
+    text-decoration:none !important;
 }
 /*------Header-------*/
+.user-name img{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    margin-right:5px;
+}
 /* chỉnh sửa menu*/
 .HeaderMenu{
   background-repeat:no-repeat;
@@ -405,9 +411,24 @@ li.clone.right {
 .rvtitile{
   color:#5dc269;
 }
+.rvtitile:hover,
+.rvtitile:focus{
+    color:#c2b65d;
+}
 .nameMv{
     font-size:17px;
     color:#5dc269;
+}
+.nameMv:hover,
+.nameMv:focus {
+    color:#c2b65d;
+}
+.title_RvMv{
+    color:#5dc269;
+}
+.title_RvMv:hover,
+time_RvMV:focus{
+    color:#c2b65d;
 }
 .bb{
 
@@ -1535,6 +1556,7 @@ a {
     color:white;
     font-size:30px;
     display:none;
+    margin-top:5%;
 }
 
 .div-profile {
@@ -1546,7 +1568,7 @@ a {
     z-index:1;
     top:140%;
     background-color: white;
-    margin-top: -10px;
+    margin-top: -20%;
     border-radius: 5px;
     padding: 5%;
     display:none;

@@ -61,10 +61,15 @@
 			<div class="profile-logout text-center">
             {% if user.is_authenticated %}
             <div class="user-name text-light">
-                {% if user.username %}
-				<p class="nav-item user m-0 text-light">{{ user.username }}</p>
-                {% else %}
-                <p class="nav-item user m-0 text-light">{{ user.last_name }} {{ user.first_name }}</p>
+				{% if user.profile.img.url %}
+				<img class="d-inline" src="{{ user.profile.img.url }}" alt="">
+				{% else %}
+				<img src="{% static 'user/avatar.png' %}" alt="">
+				{% endif %}
+                {% if user.last_name %}
+				<p class="nav-item user m-0 text-light d-inline">{{ user.last_name }} {{ user.first_name }}</p>
+				{% else %}
+				<p class="nav-item user m-0 text-light d-inline">{{ user.username }}</p>
                 {% endif %}
             </div>
             <div class="up">

@@ -15,7 +15,7 @@ Sex_choice = (
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    img = models.ImageField(upload_to='profiles_pic', blank=True, null=True, default='static/user/default_pro.jpg')
+    img = models.ImageField(upload_to='profiles_pic', blank=True, null=True, default='profiles_pic/avatar.png')
     gender = models.CharField(choices=Sex_choice, blank=True, max_length=20, null=True, default='Nam')
     time_join = models.DateTimeField(default=timezone.datetime.now(), blank=True, null=True)
     ctv = models.BooleanField(default=False)
