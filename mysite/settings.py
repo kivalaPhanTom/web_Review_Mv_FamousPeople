@@ -27,7 +27,7 @@ SECRET_KEY = 'ibtn9hswo%7)4wy=#w8@78fo9qhq&k#3$_fd2!j8tv011ybo$@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'ahihi-mview.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'ahihi-mview.herokuapp.com', 'm-view.herokuapp.com']
 
 # Application definition
 
