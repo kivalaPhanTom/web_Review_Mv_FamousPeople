@@ -1,0 +1,25 @@
+{% extends 'polls/base.html' %} <!--kế thừa từ base.html-->
+{% block edit_comment_famous %}
+{% load static%}
+<div class="container mt-5 mb-3">
+    <div class=" ml-5 mr-5 edit_comment_form">
+
+            <div class="p_Chinhsua text-center"><p>Chỉnh sửa bình luận</p></div>
+            <form action="{% url 'polls:edit_comment_famous' post.id list_detail_famous_id.id   %}"  method="POST">
+                 {% csrf_token %}
+                <p class="my_edit_comment">Bình luận của bạn</p>
+                {{  formComentFamous.bodyFamous }}
+                <br>
+                 <input style="float:right; margin-bottom:20px; margin-top:-15px;" class="btn btn-success" type="submit" value="Lưu lại">
+                 <input id="back_btn" style="float:right; margin-bottom:20px; margin-top:-15px; margin-right:10px;" type="button" class="btn btn-secondary" value="Trở lại">
+             </form>
+    </div>
+</div>
+  <div class="empty_search diableDiv">
+
+   </div>
+{% for t in list_data_search %}
+     <p class="list">{{t}}</p>
+{% endfor %}
+{% endblock %}
+

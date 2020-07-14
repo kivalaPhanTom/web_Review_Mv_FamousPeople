@@ -1,0 +1,111 @@
+{% extends  'polls/base.html' %} <!--kế thừa từ base.html-->
+
+{% block review %}
+{% load static %}
+<!--Main content-->
+	<div class="container maincontent mt-3">
+		<div class="row">
+			<a href="{% url 'polls:detail' last.id %}" class="col-lg-6 col-md-6 col-sm-12 col-xs-12 left"><!--phần tử ảnh nổi bật bên trái-->
+				<!--cụm bên trái-->
+				<img src=" {{ last.product_img_intro.url }}" alt="" class="img-fluid anh">
+				<div class="nenxanh"></div>
+				<div class="Rvchu container">
+					<div class="container">
+						<div class="row">
+							<div class="chuto ">Review MV</div>
+						</div>
+					</div>
+					<div class="chunho">
+						<p clas="search_sugesstion">{{ last.Name_MV }}</p>
+					</div>
+				</div>
+		    </a>
+
+			<div class="col-lg-6  col-md-6 col-sm-12 col-xs-12 right ">
+				<!--cụm bên phải-->
+				<div class="container containerRight text-center">
+					<div class="row">
+						<a href="{% url 'polls:detail' last1.id %}"  class="col-lg-12 col-md-12 col-sm-6 col-xs-6  top1 active"><!--phần tử ảnh nổi bật bên phải ở trên-->
+							<img src="{{ last1.product_img_intro.url }}" alt="" class="img-fluid anh1 ">
+							<div class="nenxanh1"></div>
+							<div class="top2">
+								<div class="">
+									<div class="row">
+										<div class="rview">Review MV</div>
+									</div>
+								</div>
+								<div class="namemv">
+									<p class="search_sugesstion">{{ last1.Name_MV }}</p>
+								</div>
+							</div>
+					   </a>
+
+						<a href="{% url 'polls:detail' last2.id %}"  class="col-lg-12 col-md-12 col-sm-6 col-xs-6 top1"><!--phần tử ảnh nổi bật bên phải ở dưới-->
+							<img src="{{ last2.product_img_intro.url }}" alt="" class="img-fluid anh1">
+							<div class="nenxanh1"></div>
+							<div class="top2">
+								<div class="">
+									<div class="row">
+										<div class="rview">Review MV</div>
+									</div>
+								</div>
+								<div class="namemv">
+									<p class="search_sugesstion">{{ last2.Name_MV }}</p>
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+        <hr>
+	</div>
+
+	<!--End Main content-->
+
+
+	<!--list detail content-->
+	<div class=" container mt-3 listDetail ">
+
+		<div class="row listttt">
+			{% for x, y in items %}  <!--duyệt 2 list cùng 1 lần-->
+			<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 listDetail_item wow bounceInUp" data-wow-delay="{{y}}s">
+				<a  href="{% url 'polls:detail' x.id %}"><img src="{{ x.product_img_intro.url }}" class="img-fluid "></a>
+				<h5 class="title_RvMv search_sugesstion">{{x.Name_MV}}</h5>
+				<p class="time_RvMV"><i class="fas fa-clock clock_rv">{{x.time}}</i></p>
+			</div>
+			{% endfor %}
+
+		</div>
+	</div>
+	<!--End list detail content-->
+
+<div class="empty_search diableDiv">
+
+   </div>
+
+<div class="pagination">
+    {% if items.has_previous %}
+        <a class="pagination-action" href="?page=1">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        </a>
+        <a class="pagination-action" href="?page={{ items.previous_page_number }}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+    <span class="pagination-current">{{ items.number }}</span>
+    <span class="pagination-of">of</span>
+    <span class="pagination-total">{{ items.paginator.num_pages }}</span>
+    {% if items.has_next %}
+        <a class="pagination-action" href="?page={{ items.next_page_number }}">
+            <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="?page={{ items.paginator.num_pages }}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+</div>
+{% for t in list_data_search %}
+     <p class="list">{{t}}</p>
+{% endfor %}
+{% endblock %}

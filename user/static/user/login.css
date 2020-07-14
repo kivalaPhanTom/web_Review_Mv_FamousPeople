@@ -1,0 +1,101 @@
+body{
+    margin: 0;
+    padding: 0;
+    background:url('background.jpg');
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+}
+#title{
+    color:white;
+}
+.Form{
+
+    margin:auto;
+    margin-top:20%;
+    max-width:310px;
+    width:100%;
+    padding:5%;
+    text-align: center;
+    border-radius: 5%;
+    box-shadow: -5px -5px 10px rgba(255,255,255,0.05),
+    5px 5px 15px rgba(0,0,0,0.5);
+
+}
+
+
+#id_username, #id_password {
+    margin: 20px auto;
+    border-radius: 30px;
+    display: block;
+    text-align: center;
+    background: none;
+    border: 2px solid #3498db;
+    padding: 8px 10px;
+    outline:none;
+    max-width:200px;
+    width: 75%;
+    color:white;
+    transition: 0.25s;
+}
+
+#id_username:focus, #id_password:focus,
+#id_username:hover, #id_password:hover{
+    width: 90%;
+    max-width:240px;
+    border-color: #5f27cd;
+}
+
+.Form input[type="submit"]{
+    margin: 20px auto;
+    border-radius: 30px;
+    display: block;
+    text-align: center;
+    background-color:#ffffff00;
+    border: 2px solid #3498db;
+    padding: 6px;
+    outline:none;
+    max-width:150px;
+    width: 50%;
+    color:white;
+    transition: 0.25s;
+
+}
+
+.Form input[type="submit"]:hover,
+.Form input[type="submit"]:focus{
+    width: 70%;
+    max-width:200px;
+    border-color: #1dd1a1;
+}
+
+.Form label{
+    display:none;
+}
+
+.Form ul{
+    padding:0px;
+    list-style:none;
+    color:white;
+}
+
+.Form .auth li {
+    padding:1% 0px;
+}
+.Form .auth li a{
+    text-decoration:none;
+    color:white;
+}
+.Form .auth li a:hover {
+    color:blue;
+}
+
+.gt-mview {
+    position:absolute;
+    top:45%;
+    left:0px;
+}

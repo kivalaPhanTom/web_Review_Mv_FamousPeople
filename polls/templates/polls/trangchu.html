@@ -1,0 +1,126 @@
+
+{% extends  'polls/base.html' %} <!--kế thừa từ base.html-->
+
+{% block trangchu %}
+{% load static %}
+<!--Begin Slide-->
+<!--mt-3 để cách ra 1 đoạn-->
+
+
+
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+			<ul id="vertical">
+				{% for item in reverse_list_top|slice:":5" %} <!--Giới hạn lặp 5 MV-->
+				  <li class="slider">
+					 <a href="{% url 'polls:detail' item.id%} "> <img class="img_slide1"src="{{ item.product_img_intro.url }}" /></a>
+					  <div class="NenMo"></div>
+					  <a href="{% url 'polls:detail' item.id%} "> <p class="tenBaiHat">Ca khúc: {{item.Name_MV}}</p></a>
+				  </li>
+				 {% endfor %}
+
+	        </ul>
+		</div>
+		<div class="col-3  col-md-3 col-sm-12 col-xs-12">
+            <p class="Slide_TopMV wow  bounce">Thưởng thức những MV nổi bật nhất</p>
+		</div>
+	</div>
+</div>
+
+	<!--End Slide-->
+
+	<!--Main Content-->
+	<div class="content container ">
+		<p class="chuyenrv wow bounce">Chuyên mục Review </p>
+		<div class="row flex_trangchu">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-detail">
+				<div class="row">
+                    {% if listProDuct_review %} <!--nếu listProDuct_review (danh sách sản phẩm review) tồn tại-->
+
+                        {% for item in listProDuct_review|slice:":9" %} <!--thì duyệt qua danh sách--> <!--|slice:":6" là giới hạn chỉ có 6 phần tử-->
+
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  mt-3"> <!--Item-->
+                                <div class="row">
+							        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 div_image-content">
+										<a class="aa"href="{% url 'polls:detail' item.id%} "><img src="{{ item.product_img_intro.url }}" alt="" class="img-fluid image-content"></a>
+							        </div>
+							        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+										<a class="aa"href="{% url 'polls:detail' item.id %}"><h5 class="rvtitile">{{item.Name_MV}}</h5></a>
+								        <p class="timerv"><i class="far fa-clock"></i> {{item.time}}</p>
+								        <p class="noidungrv"><i class="fas fa-bookmark"></i>  {{item.content_intro}}</p>
+							        </div>
+						        </div>
+					        </div>
+                        {% endfor %}
+
+                    {% else %}
+                    <h3 style="color:red;">Không có dữ liệu nào</h3>
+                    {% endif %}
+
+				</div>
+			</div>
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content-detail2 ">
+				<p class="Mvlastest wow bounce">Người nổi tiếng</p>
+				<div class="row">
+				 {% if ListFamous %} <!--nếu ListFamous  ) tồn tại-->
+                        {% for item in ListFamous|slice:":8" %} <!--thì duyệt qua danh sách--> <!--|slice:":3" là giới hạn chỉ có 3 phần tử-->
+
+							<div class=" detail_famous col-lg-3 col-md-3 col-sm-6 col-xs-12 ">
+								<div class="row fffaamous">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<a style =""class="bb" href="{% url 'polls:detail_famous' item.id %}"><img src="{{ item.famous_img.url }}" alt="" class="intro_famous img-fluid"></a>
+									</div>
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+										<a  class="" href="{% url 'polls:detail_famous' item.id %}"><h4 class="nameMv ">{{item.famous_title}}</h4></a>
+										<p class="timerv">{{item.time1}}</p>
+									</div>
+							</div>
+					     </div>
+				        {% endfor %}
+                    {% else %}
+                    <h3 style="color:red;">Không có dữ liệu nào</h3>
+                    {% endif %}
+					  </div>
+			</div>
+		</div>
+	</div>
+<!--	End Main Content-->
+
+
+{% endblock %}
+
+
+{% block info_teacher %}
+{% load static %}
+<!--Info_teacher-->
+<div class="container mt-4 ">
+
+	<div class="row">
+		<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 img_info_teacher">
+			<img src="{% static 'polls/img/thaydung.jpg' %}" class="img-fluid" alt="">
+		</div>
+		<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 info_teacher">
+			<div class="">
+				  <h3 class="MaMon">Mã môn học: NT208-K21-ANTT</h3>
+				  <hr>
+				<div class="">
+					 <p class="MaMon1">Tên lớp: Lớp lập trình ứng dụng web</p>
+					 <p class="webnt1">Giảng viên hướng dẫn: <span>Trần Tuấn Dũng</span> </p>
+				</div>
+				<p class="gocHocTap wow shake">Góc học tập</p>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+	 <!--End_Info_teacher-->
+{% for t in list_data_search %}
+     <p class="list">{{t}}</p>
+{% endfor %}
+
+{% endblock %}
+
+

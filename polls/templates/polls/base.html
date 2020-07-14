@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/31b5a77c7b.js" crossorigin="anonymous"></script>
+    <!-- Nhúng font-Awesome -->
+
+    <!--Link CSS-->
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+    <!--Link JS-->
+    <script type="text/javascript" src="{% static 'polls/index.js' %}"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='https://cdn.rawgit.com/daneden/animate.css/v3.1.0/animate.min.css'>
+    <!-- thư viện tạo hiệu ứng cho css-->
+    <script src='https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js'></script>
+    <!-- thư viện tạo hiệu ứng chuyển động viết bằng js-->
+    <link type="text/css" rel="stylesheet" href="{% static 'polls/JQueryLightSlider/css/lightslider.css' %}"/>
+    <!--nhúng jquery Slider-->
+    <script src="{% static 'polls/JQueryLightSlider/js/lightslider.js' %}"></script>
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <!--Jquey autocomplete cho việc search sugesstion-->
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!--Jquey autocomplete cho việc search sugesstion-->
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Bungee+Shade&family=Josefin+Sans:wght@100&family=MuseoModerno:wght@100&family=Open+Sans+Condensed:wght@300&family=Open+Sans:wght@300&family=Pangolin&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Bungee+Shade&family=Josefin+Sans:wght@100&family=MuseoModerno:wght@100&family=Open+Sans+Condensed:wght@300&family=Open+Sans:wght@300&family=Pangolin&display=swap"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Muli&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+<!---------Header----------->
+<div class="HeaderMenu">
+    <!--Begin Menu-->
+    <nav id="menu" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a id="navbar-brand" class="navbar-brand" href="{% url 'polls:index' %}"><img style="width:45px;height:45px;"
+                                                                                      src="{% static 'polls/img/logo.png' %} ">
+            MView</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+                aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse  " id="collapsibleNavId">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0  ">
+                <li class="nav-item  number ">
+                    <a class="nav-link trangchu  " href="{% url 'polls:index' %}">Trang chủ<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item number">
+                    <a class="nav-link reviewphim " href="{% url 'polls:review' %}">Review MV</a>
+                </li>
+                <li class="nav-item number">
+                    <a class="nav-link topphim" href="{% url 'polls:top' %}">Top MV</a>
+                </li>
+                <li class="nav-item number mr-3">
+                    <a class="nav-link famous" href="{% url 'polls:famous_people' %}">Người nổi tiếng</a>
+                </li>
+            </ul>
+            <div class="profile-logout text-center">
+                {% if user.is_authenticated %}
+                <div class="user-name text-light">
+                    {% if user.username %}
+                    <p class="nav-item user m-0 text-light">{{ user.username }}</p>
+                    {% else %}
+                    <p class="nav-item user m-0 text-light">{{ user.last_name }} {{ user.first_name }}</p>
+                    {% endif %}
+                </div>
+                <div class="up">
+                    <i class="fas fa-sort-up"></i>
+                </div>
+                <div class="div-profile">
+                    <ul class="m-0">
+                        <li class="li-profile"><a href="{% url 'user:profile' %}">Hồ sơ</a></li>
+                        <li class="li-logout"><a href="{% url 'user:logout' %}?next={{ request.path }}">Đăng xuất</a>
+                        </li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="div_login">
+                    <ul>
+                        <li><a class="text-center text-light" href="{% url 'user:login' %}?next={{ request.path }}">Đăng
+                            nhập</a></li>
+                        <li><a class="text-center text-light" href="{% url 'user:register' %}?next={{ request.path }}">Đăng
+                            kí</a></li>
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <!--Begin Menu-->
+    <div class="SearchData"> <!--form Search-->
+        <form id="search--form" class="form-inline my-2 my-lg-0 " accept-charset="utf-8"
+              action="{% url 'polls:search' %}" method="GET" value="{{request.GET.q}}">
+            <input id="search-input" class="form-control mr-sm-2" placeholder="Search..." type="text" name="q"
+                   value="{{request.GET.q}}">
+            <button id="submit" class="btn btn-outline-success my-2 my-sm-0 " name="submit" type="submit"
+                    value="Search">Tìm kiếm
+            </button>
+        </form>
+
+    </div>
+</div>
+<!----End Header----------->
+<!--Begin slide and content-->
+
+{% block trangchu %} <!--Trang chủ-->
+{% endblock %}
+
+{% block review %}<!--Trang review-->
+{% endblock %}
+
+{% block top%}<!--Trang Top-->
+{% endblock %}
+
+{% block famous%}<!--Trang Người nổi tiếng-->
+{% endblock %}
+
+{% block detail %}<!--Trang chi tiết-->
+{% endblock %}
+<!--End Begin slide and content-->
+
+{% block detail_famous %}<!--Trang chi tiết người nổi tiếng-->
+{% endblock %}
+
+{% block info_teacher %} <!--Phần thông tin giảng viên-->
+{% endblock %}
+
+{% block search_result %} <!--Trang kết quả tìm kiếm-->
+{% endblock %}
+
+{% block content %}        <!--trang user-->
+{% endblock %}
+
+
+{% block edit_comment %}
+{% endblock %}
+
+{% block edit_comment_famous %}
+{% endblock %}
+
+
+<!--Begin footer-->
+<div class="footer">
+    <div class="container containerFooter">
+        <div class="row ">
+            <div class="col-4">
+                <p class="footerTitle">Mview</p>
+                <div class="infoAdmin">
+                    <p>MVIEW là một trang blog chuyên review MV ca nhạc,
+                        người nổi tiếng trong nước và nước ngoài; mọi người đều có thể nhận xét, đánh giá.
+                        Chúng tôi hi vọng có thể mang lại trải nghiệm tốt nhất cho bạn</p>
+                </div>
+
+            </div>
+            <div class="col-4">
+                <p class="footerTitle">Thông tin liên hệ</p>
+                <div class="infoAdmin">
+                    <p> Địa chỉ: Đại học công nghệ thông tin - Khu phố 6- Linh trung- Thủ đức</p>
+                    <p><i class="far fa-envelope"></i> duy199982@gmail.com</p>
+                    <p><i class="fas fa-phone-alt"></i> 0986622074</p>
+                </div>
+
+            </div>
+            <div class="col-2">
+                <p class="footerTitle">Mạng xã hội</p>
+                <div class="mangXaHoi">
+                    <ul>
+                        <li><i style="color:#3B5998;" class="fab fa-facebook-f"></i></li>
+                        <li><i style="color:#1DA1F2;" class="fab fa-twitter"></i></li>
+                        <li><i style="color:#EA4335;" class="fab fa-google-plus-g"></i></li>
+                        <li><i style="color:#EA4C89;" class="fab fa-instagram"></i></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-2">
+                <img src="{% static 'polls/img/logo.png' %}" width="100px" height="100px" alt="">
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--end footer-->
+<!--Nút lên trang đầu-->
+<a class="on_top" href="#top" style="display:block;"><i class="fas fa-chevron-up"></i></a>
+
+
+<script>
+    $(document).ready(function(){
+         $(".user-name").hover(function(){
+           $(".up").css("display", "inline-block");
+           $(".div-profile").css("display", "inline");
+         }, function(){
+            $(".up").css("display", "none");
+            $(".div-profile").css("display", "none");
+         });
+
+        $(".div-profile").mouseover(function(){
+            $(".up").css("display", "inline-block");
+            $(".div-profile").css("display", "inline");
+        });
+        $(".div-profile").mouseout(function(){
+            $(".up").css("display", "none");
+            $(".div-profile").css("display", "none");
+        });
+
+        $(".up").mouseover(function(){
+            $(".up").css("display", "inline-block");
+            $(".div-profile").css("display", "inline");
+        });
+        $(".up").mouseout(function(){
+            $(".up").css("display", "none");
+            $(".div-profile").css("display", "none");
+        });
+    });
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+{% extends  'polls/base.html' %} <!--kế thừa từ base.html-->
+
+{% block search_result %}
+{% load static %}
+
+  <!--Main Content-->
+    <div class="container mt-3">
+        <h5><i class="fas fa-search"></i> Kết quả cho từ khóa: <b>{{ request.GET.q }}</b></h5>
+        <div class="row">
+            {% if request.GET.q != '' %}
+
+            {% if items %}
+              {% for x in items %}
+            <div class="item_result_search col-12"><!--item seach-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  mt-3">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 div_image-content">
+                            <a  href="{% url 'polls:detail' x.id %}"> <img src="{{x.product_img_intro.url}}" alt="" class="img-fluid image-content"></a>
+                        </div>
+                        <div class="col-lg-9  col-md-8 col-sm-7  col-xs-6 ">
+                            <a class="titleSearch" href="{% url 'polls:detail' x.id %}"><h5 class="rvtitile">{{x.Name_MV}}</h5></a>
+                            <p class="timerv"> {{x.time}}</p>
+                            <p class="noidungrv">{{x.content_intro}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+              <div class="item_result_search col-12"><!--item seach-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  mt-3">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-5 col-xs-6 div_image-content">
+                            <a  href="{% url 'polls:detail_famous' x.id %}"> <img src="{{x.famous_img.url}}" alt="" class="img-fluid image-content"></a>
+                        </div>
+                        <div class="col-lg-9  col-md-8 col-sm-7  col-xs-6 ">
+                            <a class="titleSearch" href="{% url 'polls:detail_famous' x.id %}"><h5 class="rvtitile">{{x.famous_title}}</h5></a>
+                            <p class="timerv"> {{x.time1}}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+              {% endfor %}
+
+             {% else %}
+                  <h5 class="empty_result">Không tìm thấy kết quả !!!  <i class="far fa-sad-cry"></i> </h5>
+            {% endif %}
+            {% endif %}
+
+        </div>
+    </div>
+
+    <!--End Main Content-->
+
+   <div class="empty_search diableDiv">
+
+   </div>
+
+
+<div class="pagination">
+    {% if items.has_previous %}
+        <a class="pagination-action" href="?page=1{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+        </a>
+        <a class="pagination-action" href="?page={{ items.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+            <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+    <span class="pagination-current">{{ items.number }}</span>
+    <span class="pagination-of">of</span>
+    <span class="pagination-total">{{ items.paginator.num_pages }}</span>
+    {% if items.has_next %}
+        <a class="pagination-action" href="?page={{ items.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+            <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+        <a class="pagination-action" href="?page={{ items.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+        </a>
+    {% endif %}
+</div>
+
+{% for t in list_data_search %}
+     <p class="list">{{t}}</p>
+{% endfor %}
+{% endblock %}

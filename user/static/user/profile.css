@@ -1,0 +1,65 @@
+body{
+    background:url('background.jpg');
+    background-position:center;
+    background-size:cover;
+}
+.img {
+    width:40%;
+    border-radius:50%;
+    min-width:70px;
+    max-width:120px;
+
+}
+
+.top{
+
+    padding:2%;
+    margin:0 auto;
+}
+.profile {
+    border-radius: 5%;
+    box-shadow: -5px -5px 10px rgba(255,255,255,0.05),
+    5px 5px 15px rgba(0,0,0,0.5);
+}
+#id_username, #id_email, #id_gender, #id_img{
+    border-radius:30px;
+    background-color:#ffffff00 !important;
+    color:white !important;
+    width:70%;
+    border: 2px solid #3498db;
+    text-align: center;
+    margin:0 auto;
+    transition:0.25s;
+}
+#id_username:hover, #id_email:hover, #id_gender:hover,
+#id_username:focus, #id_email:focus, #id_gender:focus {
+    width: 90%;
+    border-color: #5f27cd
+}
+
+.btn {
+    border-radius:30px;
+    width:40%;
+    border: 2px solid #3498db;
+    transition:0.25s;
+}
+.btn:hover, btn:focus {
+    width:60%;
+    border-color: #1dd1a1;
+}
+
+.body {
+    margin-top:4%;
+    margin-left:3%;
+}
+.body h5 {
+    font-size:115%;
+}
+.body p {
+    font-size:100%;
+}
+
+option {
+    background-color:#0f181d87;
+    color:white;
+}

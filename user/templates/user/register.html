@@ -1,0 +1,77 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block title %} Đăng kí {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'user/register.css' %}">
+<script src="https://www.google.com/recaptcha/api.js?render=6Levrq0ZAAAAAD4pjgERdetdqcKzluHHtu-14nxD"></script>
+<div class="container">
+        <div class="row">
+            <div class="col-1 col-sm-2 col-md-7">
+                <div class="gt-mview text-center " >
+                    <h5 class="d-inline text-light">Chào mừng bạn đến với </h5> <h4 class="text-uppercase d-inline text-light">mview</h4>
+                    <p class="text-light pl-5">một trang blog chuyên review MV ca nhạc, người nổi tiếng trong nước và ngoài nước; mọi người đều có thể nhận xét, đánh giá. Chúng tôi hi vọng có thể mang lại trải nghiệm tốt nhất cho bạn</p>
+
+                    </div>
+            </div>
+            <div class="col-10 col-sm-8 col-md-5">
+                <form action="" method="post" class="Form">
+                    {% csrf_token %}
+                    <h3 id="title" class="text-uppercase">tạo tài khoản</h3>
+                    {{ form.as_p }}
+
+                    <p><input type="submit" value="Đăng kí"></p>
+
+                </form>
+            </div>
+            <div class="col-1 col-sm-2 "></div>
+        </div>
+    </div>
+<!--script recaptcha-->
+<script>
+     function onClick(e) {
+       e.preventDefault();
+       grecaptcha.ready(function() {
+         grecaptcha.execute('6Levrq0ZAAAAAD4pjgERdetdqcKzluHHtu-14nxD', {action: 'submit'}).then(function(token) {
+             // Add your logic to submit to your backend server here.
+         });
+       });
+     }
+ </script>
+
+<script>
+
+    $(document).ready(function() {
+        let x = screen.width;
+        console.log(x);
+        if (x<737) {
+            $('.gt-mview').css('opacity', '0');
+        }
+        if (x<415) {
+            $('body').css('overflow', 'hidden');
+        }
+
+    });
+
+
+</script>
+
+{% endblock %}
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--    <head>-->
+<!--        <meta charset="utf-8">-->
+<!--        <title>Register</title>-->
+<!--        <link rel="stylesheet" href="{% static 'user/register.css' %}" >-->
+<!--      </head>-->
+<!--    <body>-->
+<!--        <form action="" method="post" class="Form">-->
+<!--            {% csrf_token %}-->
+<!--            <h1>TẠO TÀI KHOẢN</h1>-->
+<!--            {{ form.as_p }}-->
+<!--            <p><input type="submit" value="Đăng kí"></p>-->
+<!--        </form>-->
+<!--    </body>-->
+<!--</html>-->

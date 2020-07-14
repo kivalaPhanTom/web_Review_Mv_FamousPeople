@@ -1,0 +1,247 @@
+{% extends 'polls/base.html' %} <!--kế thừa từ base.html-->
+{% block detail_famous %}
+{% load static%}
+<!--Main Content-->
+    <div class="famous_content">
+        <div class="container  detail_famous_content mt-3 mb-3">
+            {% if List_Detail_Famous %}
+                  {% csrf_token %}
+                        {% for item in List_Detail_Famous.propertytitle_set.all %}  <!--tiêu đề chi tiết-->
+                                <h3>{{ item.TitleName_detail }}</h3>
+                        {% endfor %}
+
+                         {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 1-->
+                            {% if forloop.counter == 1 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 1-->
+                             {% if forloop.counter == 1 %}
+                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                         {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 2-->
+                            {% if forloop.counter == 2 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 2-->
+                             {% if forloop.counter == 2 %}
+                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                         {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 3-->
+                            {% if forloop.counter == 3 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 3-->
+                             {% if forloop.counter == 3 %}
+                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                        {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 4-->
+                            {% if forloop.counter == 4 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 4-->
+                             {% if forloop.counter == 4%}
+                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                        {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 5-->
+                            {% if forloop.counter == 5 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 5-->
+                             {% if forloop.counter == 5%}
+                                 <img class="famous_im img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                         {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 6-->
+                            {% if forloop.counter == 6 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 6-->
+                             {% if forloop.counter == 6%}
+                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                         {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 7-->
+                            {% if forloop.counter == 7 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 7-->
+                             {% if forloop.counter == 7%}
+                                 <img class="famous_im img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                         {% for item in List_Detail_Famous.propertycontent_set.all %}  <!--nội dung 8-->
+                            {% if forloop.counter == 8 %}
+                               <p class="mt-2">{{ item.content_detail }}</p>
+                            {% endif %}
+                        {% endfor %}
+                         {% for item in List_Detail_Famous.propertyimage_set.all %}<!--ảnh 8-->
+                             {% if forloop.counter == 8%}
+                                 <img class="famous_im  img-fluid" src="{{ item.product_img_detail.url }}" alt="{{item.id}}">
+                             {% endif %}
+                        {% endfor %}
+
+                        {% for item in List_Detail_Famous.propertytime_set.all %}<!-- Thời gian up bài-->
+
+                <div class="time_up mt-3">
+                    <p style="float:right;"class="time_famous">ĐƯợc upload vào ngày:<span>{{ item.timeDetail }}</span></p>
+                </div>
+            <!-- Phần share facebook -->
+                <div id="fb-root"></div>
+                  <script>(function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s); js.id = id;
+                    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                    fjs.parentNode.insertBefore(js, fjs);
+                  }(document, 'script', 'facebook-jssdk'));</script>
+
+             <div class="btn_share_fb_twiter">
+                   <!-- Your share button code -->
+                      <div class="fb-share-button"
+                        data-size="large"
+                        data-href="{{ request.build_absolute_uri }}"
+                        data-layout="button_count">
+                      </div>
+                   <!-- Hết phần share facebook -->
+                  <!-- Phần share twitter -->
+                     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                   <!-- Hết Phần share twitter -->
+             </div>
+
+
+
+            <!--Nút like -->
+             <div class="HandleBtn_Like">
+                 <div class="">
+                      {% if user.is_authenticated %}
+                            {% if like == 1 %}
+                                <form action="{%  url 'polls:famous_like' item.pk %}" method="POST">
+                                    {%csrf_token%}
+                                    <button type="submit", name="famous_id", value="{{item.id}}", class="btn btn-primary btn-sm">Like</button>
+
+                                </form>
+                            {% endif %}
+                            {% if like == 0 %}
+                                <form action="{%  url 'polls:famous_like' item.pk %}" method="POST">
+                                    {%csrf_token%}
+                                    <button type="submit", name="famous_id", value="{{item.id}}", class="btn btn-danger btn-sm">Dislike</button>
+                                </form>
+                            {% endif%}
+                      {% endif %}
+                 </div>
+                 <div class="">
+                     <p class="ml-2 mt-1"> Lượt Like {{ total_like }}</p>
+                 </div>
+             </div>
+             <!-- Hết nút like -->
+
+
+            {% endfor %}
+            {% endif %}
+              <a style="float:right;"id="back_btn"class="back_famous"href=""><i class="fas fa-caret-left"></i> Trở lại </a>
+        </div>
+    </div>
+ <!---------------------Phần Bình luận----------------------->
+<div class="container">
+    <h4 class="mb-3 h4_comment">Mục bình luận</h4>
+        {% if user.username %} <!--Xác thực xem có phải là user thì mới cho phép comment -->
+            <form  action="{% url 'polls:detail_famous' List_Detail_Famous.id  %}"  method="POST">
+                <p><strong>{{user.username}}</strong> - <lable>hãy để lại bình luận:</lable></p>
+                 {% csrf_token %}
+                {{ formComentFamous.bodyFamous}}
+                <br>
+                 <input style="float:right;margin-top:-20px;" class="btn btn-success" type="submit" value="Bình luận">
+            </form>
+        {% endif %}
+        <hr style="background-color:#5dc269;  clear:both; margin-top:30px;" >
+ {% for comment in comments %} <!-- duyệt vòng vặp để in ra hết tất cả comment-->
+
+              <p><strong>{{ comment.authorFamous}}</strong> - <label style="color:gray;">{{ comment.dateFamous}}</label></p>
+             <div class="row">
+                 <div class="col">
+                        <p>{{ comment.bodyFamous}}</p>
+                 </div>
+                 <div class="col-3">
+                     {% if comment.authorFamous == request.user  %} <!-- kiểm tra xem có đúng là user đang đăng nhập vào thì mới có chức năng xóa,sửa cho bình luận đó -->
+                        <div class="edit_and_remove">
+                            <a href="{%url 'polls:edit_comment_famous' comment.id List_Detail_Famous.id  %}"><i style="color:#ADB0B3;"class="fas fa-pencil-alt"></i></a>
+                            <a href="{%url 'polls:post-delete-famous' List_Detail_Famous.id comment.id %}"><i style="color:#ADB0B3;"class="fas fa-trash-alt"></i></a>
+                        </div>
+                     {%  endif %}
+                 </div>
+
+             </div>
+            {% if comment.repliesFamous.count >= 0 %} <!-- Đếm số reply bình luận trong 1 bình luận -->
+              <p class="luotphanhoi">lượt phản hồi: {{ comment.repliesFamous.count}} bình luận |  <a  style="color:#247c38; font-weight:600;"class="comment-reply-btn"href="#">Phản hồi</a> </p>
+            {% endif %}
+
+
+             <div class="Reply_Comment ml-5" >
+                  {% for reply in comment.repliesFamous.all %}<!-- duyệt vòng vặp để in ra hết tất cả Reply comment-->
+                  <div class="reply_item" style="background-color:#F3F4F4; border-radius:10px;">
+                      <div class=" ml-3 mr-2" style="padding-top:8px;">
+                           <p class="info">Đã trả lời: <strong>{{ reply.authorFamous }}</strong> - <lable style="color:gray;">{{ reply.dateFamous }}</lable></p>
+                     <div class="row">
+                         <div class="col">
+                               <p>{{ reply.bodyFamous }}</p>
+                         </div>
+                         <div class="col-4">
+                             {% if reply.authorFamous == request.user  %} <!-- kiểm tra xem có đúng là user đang đăng nhập vào thì mới có chức năng xóa,sửa cho bình luận đó -->
+                                <div class="edit_and_remove">
+                                     <a href="{%url 'polls:edit_comment_famous' reply.id List_Detail_Famous.id   %}"><i style="color:#ADB0B3;" class="fas fa-pencil-alt"></i></a>
+                                    <a href="{%url 'polls:post-delete-famous' List_Detail_Famous.id reply.id %}"><i style="color:#ADB0B3;"class="fas fa-trash-alt"></i></a>
+                                </div>
+                             {%  endif %}
+                         </div>
+                     </div>
+                      </div>
+                  </div>
+                 <br>
+                  {% endfor %}
+                  <div class="ml-5">
+               <p style="color:#247c38; font-weight:600;">Phản hồi bình luận</p>
+         {% if  request.user.is_authenticated  %} <!--Phải đăng nhập mới cho phép phản hồi bình luận-->
+            <form action="{% url 'polls:detail_famous' List_Detail_Famous.id  %}" method="post">
+                {{ formComentFamous.bodyFamous }}
+                {% csrf_token %}
+                <!-- Hidden input for parent comment.id -->
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                <input style="float:right;margin-top:5px; margin-bottom:10px;"class="btn btn-success" type="submit" value="Phản hồi">
+            </form>
+        {%  endif %}
+          </div>
+
+             </div>
+
+        <hr style="clear:both;" >
+        {% empty %}
+            <p>Chưa có bình luận nào :(</p>
+        {% endfor %}
+
+</div>
+<!-------------End--------Phần Bình luận----------------------->
+	<!--End Main Content-->
+{% for t in list_data_search %}
+     <p class="list">{{t}}</p>
+{% endfor %}
+
+{% endblock %}
