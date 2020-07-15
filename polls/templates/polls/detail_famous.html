@@ -171,7 +171,15 @@
  <!---------------------Phần Bình luận----------------------->
 <div class="container">
     <h4 class="mb-3 h4_comment">Mục bình luận</h4>
-        {% if user.username %} <!--Xác thực xem có phải là user thì mới cho phép comment -->
+        {% if user.last_name %} <!--Xác thực xem có phải là user thì mới cho phép comment -->
+        <form  action="{% url 'polls:detail_famous' List_Detail_Famous.id  %}"  method="POST">
+                <p><strong>{{user.last_name}} {{user.first_name}}</strong> - <lable>hãy để lại bình luận:</lable></p>
+                 {% csrf_token %}
+                {{ formComentFamous.bodyFamous}}
+                <br>
+                 <input style="float:right;margin-top:-20px;" class="btn btn-success" type="submit" value="Bình luận">
+            </form>
+        {% else %}
             <form  action="{% url 'polls:detail_famous' List_Detail_Famous.id  %}"  method="POST">
                 <p><strong>{{user.username}}</strong> - <lable>hãy để lại bình luận:</lable></p>
                  {% csrf_token %}
@@ -183,7 +191,7 @@
         <hr style="background-color:#5dc269;  clear:both; margin-top:30px;" >
  {% for comment in comments %} <!-- duyệt vòng vặp để in ra hết tất cả comment-->
 
-              <p><strong>{{ comment.authorFamous}}</strong> - <label style="color:gray;">{{ comment.dateFamous}}</label></p>
+              <p><strong>{{ comment.authorFamous.last_name}} {{ comment.authorFamous.first_name}}</strong> - <label style="color:gray;">{{ comment.dateFamous}}</label></p>
              <div class="row">
                  <div class="col">
                         <p>{{ comment.bodyFamous}}</p>
@@ -207,7 +215,7 @@
                   {% for reply in comment.repliesFamous.all %}<!-- duyệt vòng vặp để in ra hết tất cả Reply comment-->
                   <div class="reply_item" style="background-color:#F3F4F4; border-radius:10px;">
                       <div class=" ml-3 mr-2" style="padding-top:8px;">
-                           <p class="info">Đã trả lời: <strong>{{ reply.authorFamous }}</strong> - <lable style="color:gray;">{{ reply.dateFamous }}</lable></p>
+                           <p class="info">Đã trả lời: <strong>{{ reply.authorFamous.last_name  }} {{ reply.authorFamous.first_name  }}</strong> - <lable style="color:gray;">{{ reply.dateFamous }}</lable></p>
                      <div class="row">
                          <div class="col">
                                <p>{{ reply.bodyFamous }}</p>
