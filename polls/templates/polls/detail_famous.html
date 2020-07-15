@@ -191,7 +191,12 @@
         <hr style="background-color:#5dc269;  clear:both; margin-top:30px;" >
  {% for comment in comments %} <!-- duyệt vòng vặp để in ra hết tất cả comment-->
 
-              <p><strong>{{ comment.authorFamous.last_name}} {{ comment.authorFamous.first_name}}</strong> - <label style="color:gray;">{{ comment.dateFamous}}</label></p>
+            {% if comment.authorFamous.last_name %}
+              <p><strong>{{ comment.authorFamous.last_name}} {{ comment.authorFamous.first_name}}</strong> - <label style="color:gray;">{{ comment.date}}</label></p>
+        {% else %}
+                  <p><strong>{{ comment.authorFamous}}</strong> - <label style="color:gray;">{{ comment.date}}</label></p>
+
+        {% endif %}
              <div class="row">
                  <div class="col">
                         <p>{{ comment.bodyFamous}}</p>
@@ -215,7 +220,11 @@
                   {% for reply in comment.repliesFamous.all %}<!-- duyệt vòng vặp để in ra hết tất cả Reply comment-->
                   <div class="reply_item" style="background-color:#F3F4F4; border-radius:10px;">
                       <div class=" ml-3 mr-2" style="padding-top:8px;">
-                           <p class="info">Đã trả lời: <strong>{{ reply.authorFamous.last_name  }} {{ reply.authorFamous.first_name  }}</strong> - <lable style="color:gray;">{{ reply.dateFamous }}</lable></p>
+                          {% if reply.authorFamous.last_name %}
+                           <p class="info">Đã trả lời: <strong>{{ reply.authorFamous.last_name  }} {{ reply.authorFamous.first_name  }}</strong> - <lable style="color:gray;">{{ reply.date }}</lable></p>
+                        {% else %}
+                          <p class="info">Đã trả lời: <strong>{{ reply.authorFamous}}</strong> - <lable style="color:gray;">{{ reply.date }}</lable></p>
+                        {% endif %}
                      <div class="row">
                          <div class="col">
                                <p>{{ reply.bodyFamous }}</p>
