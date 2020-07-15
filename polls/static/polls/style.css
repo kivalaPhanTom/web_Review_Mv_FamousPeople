@@ -491,7 +491,7 @@ time_RvMV:focus{
     }
     .nameMv{
         font-size:18px;
-        width:200px;
+        width:90%;
     }
 }
 @media (max-width:320px){
